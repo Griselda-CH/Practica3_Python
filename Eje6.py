@@ -6,3 +6,4 @@ y la moda es el número que más veces aparece en la lista.
 Asegúrate de manejar correctamente los casos en que no haya una moda única o cuando la lista sea vacía. 
 Para este ejercicio, puedes asumir que siempre habrá al menos un número en la lista."""
 
+
