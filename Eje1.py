@@ -5,5 +5,3 @@ porque sus divisores (1, 2 y 3) suman 6. Escribe una función que reciba un núm
 entero positivo y devuelva un mensaje indicando si el número es perfecto o no.
 Tu implementación debe recorrer todos los posibles divisores menores al número dado, 
 calcular su suma y luego verificar si esta suma es igual al número original."""
-
-
