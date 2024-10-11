@@ -4,52 +4,6 @@ HAZ UN SOFTWARE TOTALMENTE LIBRE QUE RESUELVA UN PROBLEMA EN ESPECÍFICO
 TODO LO QUE SE VIO EN CLASE HASTA EL TEMA DE POO (CLASES) NO SE ACEPTARÁ HERENCIA"""
 #Esta aplicacion tiene como fin agregar estudiantes con sus respectivas notas en cada materia
 
-#El Menu para poder interactuar con la aplicacion
-
-def mostrar_menu():
-    print ("\n--- Menu de Registro de Estudiantes")
-    print ("1. Agregar Estudiante")
-    print ("2. Mostrar Estudiante")
-    print ("3. Eliminar Estudiante")
-    print ("4. Cargar Datos")
-    print ("5. Guardar datos")
-    print ("6. Salir")
-
-def main():
-    registro = RegistroDeNotas()
-    
-    while True:
-        mostrar_menu()
-        opcion = input("Selecione una opcion (1-6): ")
-        
-        if opcion == '1':
-            agregar_estudiantes_interactivo(registro)
-        elif opcion == '2':
-            registro.mostrar_estudiantes()
-        elif opcion == '3':   
-            id_estudiante = input("Ingrese el Id del estudiante a eliminar: ")
-            try: 
-                registro.eliminar_estudiante(id_estudiante)
-            except KeyError as e:
-                print(e)
-        elif opcion == '4':
-            archivo = input("Ingrese el nombre del archivo para cargar datos (por ejemplo, estudiante.json): ")
-            try:
-                registro.cargar_datos(archivo)
-                print("Datos cargados con exito.")
-            except FileNotFoundError:
-                print("Error: El archivo no se encontro:")
-        elif opcion == '5':
-            archivo = input("Ingrese el nombre del archivo para guardar datos (por ejemplo, estudiante,json): ")
-            registro.guardar_datos(archivo)
-            print("Datos guardados con exito.")
-        elif opcion == '6':
-            print("saliendo del programa")
-            break
-        else:
-            print("Opcion no valida, por favor selecione una opcion del 1 al 6.")
-if __name__ == "__main__":
-    main()    
 class Estudiante:
     def __init__(self, nombre, id_estudiante):
         self.nombre = nombre
@@ -120,7 +74,15 @@ class RegistroDeNotas:
         else:
             print("No hay estudiantes registrados.")
 
-# Funcion para interactuar con el usuario y agregar estudiantes y notas
+# Función para mostrar el menú
+def mostrar_menu():
+    print ("\n--- Menú de Registro de Estudiantes ---")
+    print ("1. Agregar Estudiante")
+    print ("2. Mostrar Estudiantes")
+    print ("3. Eliminar Estudiante")
+    print ("4. Salir")
+    
+# Función para interactuar con el usuario y agregar estudiantes y notas
 def agregar_estudiantes_interactivo(registro):
     while True:
         nombre = input("Ingrese el nombre del estudiante: ")
@@ -133,7 +95,7 @@ def agregar_estudiantes_interactivo(registro):
             while True:
                 materia = input("Ingrese el nombre de la materia: ")
 
-                # Validacion de la nota dentro del rango 0-100
+                # Validación de la nota dentro del rango 0-100
                 while True:
                     try:
                         nota = float(input(f"Ingrese la nota para {materia} (0-100): "))
@@ -160,11 +122,30 @@ def agregar_estudiantes_interactivo(registro):
         if continuar != 's':
             break
 
-# Uso del sistema de registro de notas con interacción
-registro = RegistroDeNotas()
+# Función principal para el menú interactivo
+def main():
+    registro = RegistroDeNotas()
 
-# Llamada para permitir al usuario agregar estudiantes y sus notas
-agregar_estudiantes_interactivo(registro)
+    while True:
+        mostrar_menu()
+        opcion = input("Seleccione una opción (1-4): ")
 
-# Mostrar todos los estudiantes registrados
-registro.mostrar_estudiantes()
+        if opcion == '1':
+            agregar_estudiantes_interactivo(registro)
+        elif opcion == '2':
+            registro.mostrar_estudiantes()
+        elif opcion == '3':
+            id_estudiante = input("Ingrese el ID del estudiante a eliminar: ")            
+            try:
+                registro.eliminar_estudiante(id_estudiante)
+            except KeyError as e:
+                print(e)
+        elif opcion == '4':
+            print("Saliendo del programa") 
+            break
+        else:
+            print("Opción no válida, por favor seleccione una opción del 1 al 4.")
+
+# Ejecutar el programa
+if __name__ == "__main__":
+    main()
