@@ -2,7 +2,6 @@
 HAZ UN SOFTWARE TOTALMENTE LIBRE QUE RESUELVA UN PROBLEMA EN ESPECÍFICO
 ¿QUÉ DEBEN USAR?
 TODO LO QUE SE VIO EN CLASE HASTA EL TEMA DE POO (CLASES) NO SE ACEPTARÁ HERENCIA"""
-
 #Esta aplicacion tiene como fin agregar estudiantes con sus respectivas notas en cada materia
 
 #El Menu para poder interactuar con la aplicacion
@@ -19,8 +18,8 @@ def mostrar_menu():
 def main():
     registro = RegistroDeNotas()
     
-    while true:
-        mostrar_menu
+    while True:
+        mostrar_menu()
         opcion = input("Selecione una opcion (1-6): ")
         
         if opcion == '1':
@@ -49,8 +48,8 @@ def main():
             break
         else:
             print("Opcion no valida, por favor selecione una opcion del 1 al 6.")
-if __name__ == "_main_":
-    main()               
+if __name__ == "__main__":
+    main()    
 class Estudiante:
     def __init__(self, nombre, id_estudiante):
         self.nombre = nombre
